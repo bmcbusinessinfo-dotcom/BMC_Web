@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { Instagram, MapPin, Phone, Video, Camera, ArrowUpRight } from "lucide-react";
 import { Mail, MessageCircle } from "lucide-react";
-import logo from "../assets/logo.png";
+import LOGO from "../assets/LOGO.png";
 function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -27,7 +27,7 @@ function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* SECCIÓN DE MARCA */}
           <div className="space-y-6">
-            <img src={logo} alt="BMC Logo" className="h-12 w-auto" />
+            <img src={LOGO} alt="BMC Logo" className="h-12 w-auto" />
             <p className="text-gray-500 text-xs font-medium leading-relaxed uppercase tracking-wider">
               Saliendo de la rutina y la zona de confort a través del arte automotriz.
               <span className="block mt-2 text-orange-600/80 italic font-black text-[10px]">
