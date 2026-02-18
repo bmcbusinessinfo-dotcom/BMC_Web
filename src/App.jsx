@@ -56,6 +56,7 @@ function AppContent() {
       </div>
 
       <Toaster />
+      <Analytics />
     </>
   );
 }
