@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { Instagram, Camera, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
+import logo from "../assets/Logo.png";
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -50,7 +51,7 @@ function Header() {
           <NavLink to="/" className="relative z-[120] flex items-center group">
             <div className="flex flex-col items-start">
               <img
-                src="/src/assets/logo.png"
+                src={logo}
                 alt="BMC Logo"
                 className="h-8 md:h-10 w-auto transition-transform duration-500 group-hover:scale-110"
               />
