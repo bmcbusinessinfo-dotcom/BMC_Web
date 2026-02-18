@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import GalaxyBackground from "@/components/GalaxyBackground";
 import EnhancedCursorTracker from "@/components/EnhancedCursorTracker";
-
+import { Analytics } from "@vercel/analytics/next";
 import InicioPage from "@/pages/InicioPage";
 import PortafolioPage from "@/pages/PortafolioPage";
 import SobreNosotrosPage from "@/pages/SobreNosotrosPage";
