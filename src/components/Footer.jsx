@@ -1,32 +1,29 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
-import {
-  Instagram,
-  MapPin,
-  Phone,
-  Video,
-  Camera,
-  Mail,
-  MessageCircle,
-  ShieldCheck,
-} from "lucide-react";
+import { Instagram, MapPin, Video, Camera, Mail, MessageCircle, ShieldCheck } from "lucide-react";
 
 function Footer() {
   const currentYear = new Date().getFullYear();
 
-  // Función para forzar la apertura de la App de Instagram
-  const handleInstagramClick = (e) => {
+  // ESTA ES LA FUNCIÓN QUE CORRIGE EL ERROR DEL PERFIL
+  const openInstagram = (e) => {
     e.preventDefault();
+
+    // 1. Intentamos el esquema de la App (Este fuerza a buscar el usuario)
     const appUrl = "instagram://user?username=bmc_photographycars";
+    // 2. Link de respaldo web limpio
     const webUrl = "https://www.instagram.com/bmc_photographycars/";
 
-    // Intentamos disparar el protocolo de la App
+    // Ejecutamos la apertura de la App
     window.location.href = appUrl;
 
-    // Si falla o no tiene la app, abrimos la web en una pestaña nueva tras un breve delay
+    // 3. Si en 600ms el usuario sigue en la web (no se abrió la app),
+    // lo mandamos al perfil en el navegador.
     setTimeout(() => {
-      window.open(webUrl, "_blank", "noopener,noreferrer");
-    }, 500);
+      if (!document.hidden) {
+        window.open(webUrl, "_blank");
+      }
+    }, 600);
   };
 
   return (
@@ -44,7 +41,7 @@ function Footer() {
             </p>
           </div>
 
-          {/* NAVEGACIÓN Y LEGAL */}
+          {/* NAVEGACIÓN */}
           <div className="space-y-4">
             <h3 className="text-white font-black text-[10px] uppercase tracking-[0.3em] italic border-l-2 border-orange-600 pl-3">
               Explorar
@@ -74,14 +71,14 @@ function Footer() {
             </nav>
           </div>
 
-          {/* BOOKING & UBICACIÓN */}
+          {/* BOOKING */}
           <div className="space-y-4">
             <h3 className="text-white font-black text-[10px] uppercase tracking-[0.3em] italic border-l-2 border-orange-600 pl-3">
               Booking
             </h3>
             <div className="space-y-3">
               <a
-                href="https://wa.me/5216183253693?text=%C2%A1Hola%2C%20vi%20tu%20portafolio%20y%20me%20encanto%2C%20quiero%20recibir%20mas%20informacion%C2%A1."
+                href="https://wa.me/5216183253693"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center justify-between bg-white/[0.02] border border-white/5 px-4 py-3 rounded-xl hover:border-[#25D366]/40 transition-all duration-500"
@@ -101,7 +98,7 @@ function Footer() {
               </a>
 
               <a
-                href="mailto:bmc.business.info@gmail.com?subject=Consulta%20de%20Sesi%C3%B3n%20Fotogr%C3%A1fica%20-%20BMC"
+                href="mailto:bmc.business.info@gmail.com"
                 className="group flex items-center justify-between bg-white/[0.02] border border-white/5 px-4 py-3 rounded-xl hover:border-orange-500/40 transition-all duration-500"
               >
                 <div className="flex flex-col">
@@ -120,36 +117,27 @@ function Footer() {
 
               <div className="flex items-start space-x-2 pt-2">
                 <MapPin size={14} className="text-blue-500 mt-1 shrink-0" />
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=Durango,Mexico"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-500 hover:text-blue-400 text-[10px] font-bold uppercase italic leading-tight transition-colors"
-                >
-                  Durango, México <br />
-                  <span className="text-[8px] opacity-50 tracking-tighter">
-                    Click para ver ubicación
-                  </span>
-                </a>
+                <span className="text-gray-500 text-[10px] font-bold uppercase italic leading-tight">
+                  Durango, México
+                </span>
               </div>
             </div>
           </div>
 
-          {/* GEAR & SOCIAL */}
+          {/* SOCIAL & GEAR */}
           <div className="space-y-6">
             <h3 className="text-white font-black text-[10px] uppercase tracking-[0.3em] italic border-l-2 border-orange-600 pl-3">
               Gear & Connect
             </h3>
             <div className="flex space-x-3">
-              {/* BOTÓN INSTAGRAM CON DEEP LINK */}
+              {/* BOTÓN DE INSTAGRAM CON LÓGICA DE CORRECCIÓN */}
               <button
-                onClick={handleInstagramClick}
-                className="text-white p-3 bg-white/5 rounded-2xl border border-white/5 transition-all hover:scale-110 hover:text-pink-500"
+                onClick={openInstagram}
+                className="text-white p-3 bg-white/5 rounded-2xl border border-white/5 transition-all hover:scale-110 hover:text-pink-500 cursor-pointer"
               >
                 <Instagram size={18} />
               </button>
 
-              {/* TIKTOK MANTENIDO IGUAL */}
               <a
                 href="https://tiktok.com/@bmc_photographycars"
                 target="_blank"
@@ -180,11 +168,8 @@ function Footer() {
             © {currentYear} BREAK MY COMFORT // ALL RIGHTS RESERVED
           </p>
           <div className="flex gap-6 opacity-30">
-            <span className="text-white text-[8px] font-black uppercase tracking-widest italic">
+            <span className="text-white text-[8px] font-black uppercase tracking-widest italic text-center">
               Designed for High Aesthetics
-            </span>
-            <span className="text-orange-600 text-[8px] font-black uppercase tracking-widest italic">
-              v2.1 Cinematic
             </span>
           </div>
         </div>
