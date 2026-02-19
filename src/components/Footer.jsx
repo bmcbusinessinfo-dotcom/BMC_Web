@@ -38,6 +38,15 @@ function Footer() {
                   {item}
                 </NavLink>
               ))}
+              <Link
+                to="/servicios"
+                className="pt-4 flex items-center gap-2 text-gray-600 hover:text-orange-500 transition-colors"
+              >
+                <ShieldCheck size={12} />
+                <span className="text-[10px] font-black uppercase italic tracking-widest">
+                  Términos y Privacidad
+                </span>
+              </Link>
             </nav>
           </div>
 
@@ -66,6 +75,13 @@ function Footer() {
                   className="text-gray-500 group-hover:text-[#25D366] transition-colors"
                 />
               </a>
+
+              <div className="flex items-start space-x-2 pt-2">
+                <MapPin size={14} className="text-blue-500 mt-1 shrink-0" />
+                <span className="text-gray-500 text-[10px] font-bold uppercase italic leading-tight">
+                  Durango, México
+                </span>
+              </div>
             </div>
           </div>
 
@@ -75,12 +91,18 @@ function Footer() {
               Gear & Connect
             </h3>
             <div className="flex space-x-3">
-              {/* LINK DE INSTAGRAM CORREGIDO: Usamos el link de 'u' que es el más estable para apps */}
+              {/* LINK DE INSTAGRAM CON DOBLE PROTOCOLO */}
               <a
-                href="https://www.instagram.com/bmc_photographycars/"
+                href="https://www.instagram.com/_u/bmc_photographycars"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white p-3 bg-white/5 rounded-2xl border border-white/5 transition-all hover:scale-110 hover:text-pink-500"
+                onClick={(e) => {
+                  // Pequeño hack: intentamos abrir el esquema de la app si el link normal falla
+                  setTimeout(() => {
+                    window.location.href = "instagram://user?username=bmc_photographycars";
+                  }, 250);
+                }}
               >
                 <Instagram size={18} />
               </a>
@@ -110,8 +132,8 @@ function Footer() {
         </div>
 
         {/* BARRA FINAL */}
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-center">
-          <p className="text-gray-600 text-[9px] font-black uppercase tracking-[0.4em] italic">
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-gray-600 text-[9px] font-black uppercase tracking-[0.4em] italic text-center md:text-left">
             © {currentYear} BREAK MY COMFORT // ALL RIGHTS RESERVED
           </p>
         </div>
