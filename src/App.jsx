@@ -12,6 +12,7 @@ import PortafolioPage from "@/pages/PortafolioPage";
 import SobreNosotrosPage from "@/pages/SobreNosotrosPage";
 import ContactoPage from "@/pages/ContactoPage";
 import SocialFeedPage from "@/pages/SocialFeedPage";
+import ServiciosPage from "@/pages/ServiciosPage";
 
 function AppContent() {
   const location = useLocation();
@@ -49,6 +50,9 @@ function AppContent() {
             <Route path="/sobre-nosotros" element={<SobreNosotrosPage />} />
             <Route path="/contacto" element={<ContactoPage />} />
             <Route path="/social-feed" element={<SocialFeedPage />} />
+
+            {/* ✅ NUEVA RUTA REGISTRADA */}
+            <Route path="/servicios" element={<ServiciosPage />} />
           </Routes>
         </main>
 
@@ -56,6 +60,9 @@ function AppContent() {
       </div>
 
       <Toaster />
+
+      {/* ✅ ANALYTICS PARA RASTREAR VISITAS */}
+      <Analytics />
     </>
   );
 }

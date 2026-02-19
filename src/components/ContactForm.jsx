@@ -102,8 +102,8 @@ ${formData.message}
     `.trim();
 
     const templateParams = {
-      user_name: formData.name,
-      user_email: formData.email,
+      name: formData.name,
+      email: formData.email,
       message: fullDetails,
     };
 

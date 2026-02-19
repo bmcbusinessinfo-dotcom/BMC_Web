@@ -110,7 +110,7 @@ function ContactoPage() {
                   {
                     icon: MapPin,
                     label: "Durango, MX",
-                    link: "/src/pages/SobreNosotrosPage.jsx",
+                    link: "https://www.google.com/maps/search/Durango,+Mexico/",
                   },
                   {
                     icon: Instagram,

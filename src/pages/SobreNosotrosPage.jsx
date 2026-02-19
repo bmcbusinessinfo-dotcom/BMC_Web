@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import { motion, useScroll } from "framer-motion";
 import ScrollTriggerAnimation from "@/components/ScrollTriggerAnimation";
 import { Camera, Zap, Target, Eye, Flame, Shield, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 function SobreNosotrosPage() {
   const { scrollYProgress } = useScroll();
@@ -197,19 +198,21 @@ function SobreNosotrosPage() {
                 ¿LISTO PARA <br />
                 <span className="text-orange-500">ROMPER EL COMFORT?</span>
               </h2>
-              <button
-                onClick={() => (window.location.href = "/contacto")}
-                className="group relative inline-flex items-center gap-4 px-10 md:px-20 py-5 md:py-8 overflow-hidden font-black text-white bg-transparent border-[3px] border-white rounded-full transition-all duration-700 hover:border-orange-500"
+              <Link
+                to="/contacto"
+                className="group relative inline-flex items-center gap-4 px-10 md:px-20 py-5 md:py-8 overflow-hidden font-black text-white bg-transparent border-[3px] border-white rounded-full transition-all duration-700 hover:border-orange-500 shadow-2xl"
               >
-                <span className="absolute inset-0 w-0 h-full bg-orange-500 transition-all duration-700 group-hover:w-full"></span>
-                <span className="relative z-10 uppercase tracking-[0.3em] text-sm md:text-lg group-hover:text-black">
+                <span className="absolute inset-0 w-0 h-full bg-orange-500 transition-all duration-700 ease-in-out group-hover:w-full"></span>
+
+                <span className="relative z-10 uppercase tracking-[0.3em] text-sm md:text-lg transition-colors duration-500 group-hover:text-black italic">
                   Agendar Sesión
                 </span>
+
                 <ChevronRight
-                  className="relative z-10 group-hover:translate-x-2 group-hover:text-black transition-transform"
+                  className="relative z-10 transition-all duration-500 group-hover:translate-x-2 group-hover:text-black"
                   size={24}
                 />
-              </button>
+              </Link>
             </ScrollTriggerAnimation>
           </div>
         </div>
