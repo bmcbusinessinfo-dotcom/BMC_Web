@@ -14,20 +14,20 @@ import {
 function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const socialLinks = [
-    {
-      name: "Instagram",
-      icon: Instagram,
-      url: "https://www.instagram.com/_u/bmc_photographycars/",
-      color: "hover:text-pink-500",
-    },
-    {
-      name: "TikTok",
-      icon: Video,
-      url: "https://tiktok.com/@bmc_photographycars",
-      color: "hover:text-cyan-400",
-    },
-  ];
+  // Función para forzar la apertura de la App de Instagram
+  const handleInstagramClick = (e) => {
+    e.preventDefault();
+    const appUrl = "instagram://user?username=bmc_photographycars";
+    const webUrl = "https://www.instagram.com/bmc_photographycars/";
+
+    // Intentamos disparar el protocolo de la App
+    window.location.href = appUrl;
+
+    // Si falla o no tiene la app, abrimos la web en una pestaña nueva tras un breve delay
+    setTimeout(() => {
+      window.open(webUrl, "_blank", "noopener,noreferrer");
+    }, 500);
+  };
 
   return (
     <footer className="bg-[#050505] border-t border-white/5 relative z-10 pt-16 pb-8">
@@ -44,7 +44,7 @@ function Footer() {
             </p>
           </div>
 
-          {/* NAVEGACIÓN Y LEGAL (Punto 6) */}
+          {/* NAVEGACIÓN Y LEGAL */}
           <div className="space-y-4">
             <h3 className="text-white font-black text-[10px] uppercase tracking-[0.3em] italic border-l-2 border-orange-600 pl-3">
               Explorar
@@ -62,7 +62,6 @@ function Footer() {
                   {item}
                 </NavLink>
               ))}
-              {/* Link Legal (Punto 6) */}
               <Link
                 to="/servicios"
                 className="pt-4 flex items-center gap-2 text-gray-600 hover:text-orange-500 transition-colors"
@@ -75,7 +74,7 @@ function Footer() {
             </nav>
           </div>
 
-          {/* BOOKING & UBICACIÓN (Punto 12) */}
+          {/* BOOKING & UBICACIÓN */}
           <div className="space-y-4">
             <h3 className="text-white font-black text-[10px] uppercase tracking-[0.3em] italic border-l-2 border-orange-600 pl-3">
               Booking
@@ -119,11 +118,10 @@ function Footer() {
                 />
               </a>
 
-              {/* Ubicación corregida (Punto 12) */}
               <div className="flex items-start space-x-2 pt-2">
                 <MapPin size={14} className="text-blue-500 mt-1 shrink-0" />
                 <a
-                  href="https://maps.app.goo.gl/7qV5bVTgDdQUvoHf8"
+                  href="https://www.google.com/maps/search/?api=1&query=Durango,Mexico"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-500 hover:text-blue-400 text-[10px] font-bold uppercase italic leading-tight transition-colors"
@@ -143,17 +141,23 @@ function Footer() {
               Gear & Connect
             </h3>
             <div className="flex space-x-3">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`text-white p-3 bg-white/5 rounded-2xl border border-white/5 transition-all hover:scale-110 ${social.color}`}
-                >
-                  <social.icon size={18} />
-                </a>
-              ))}
+              {/* BOTÓN INSTAGRAM CON DEEP LINK */}
+              <button
+                onClick={handleInstagramClick}
+                className="text-white p-3 bg-white/5 rounded-2xl border border-white/5 transition-all hover:scale-110 hover:text-pink-500"
+              >
+                <Instagram size={18} />
+              </button>
+
+              {/* TIKTOK MANTENIDO IGUAL */}
+              <a
+                href="https://tiktok.com/@bmc_photographycars"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white p-3 bg-white/5 rounded-2xl border border-white/5 transition-all hover:scale-110 hover:text-cyan-400"
+              >
+                <Video size={18} />
+              </a>
             </div>
 
             <div className="flex items-center gap-3 p-4 rounded-2xl bg-white/[0.02] border border-white/5">
