@@ -91,18 +91,12 @@ function Footer() {
               Gear & Connect
             </h3>
             <div className="flex space-x-3">
-              {/* LINK DE INSTAGRAM CON DOBLE PROTOCOLO */}
+              {/* LINK INTELIGENTE DE LINKTWIN */}
               <a
-                href="https://www.instagram.com/_u/bmc_photographycars"
+                href="https://linktw.in/hdynur"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white p-3 bg-white/5 rounded-2xl border border-white/5 transition-all hover:scale-110 hover:text-pink-500"
-                onClick={(e) => {
-                  // Pequeño hack: intentamos abrir el esquema de la app si el link normal falla
-                  setTimeout(() => {
-                    window.location.href = "instagram://user?username=bmc_photographycars";
-                  }, 250);
-                }}
               >
                 <Instagram size={18} />
               </a>
@@ -136,6 +130,11 @@ function Footer() {
           <p className="text-gray-600 text-[9px] font-black uppercase tracking-[0.4em] italic text-center md:text-left">
             © {currentYear} BREAK MY COMFORT // ALL RIGHTS RESERVED
           </p>
+          <div className="flex gap-6 opacity-30">
+            <span className="text-orange-600 text-[8px] font-black uppercase tracking-widest italic">
+              v2.1 Cinematic
+            </span>
+          </div>
         </div>
       </div>
     </footer>
