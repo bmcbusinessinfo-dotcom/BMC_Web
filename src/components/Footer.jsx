@@ -5,27 +5,6 @@ import { Instagram, MapPin, Video, Camera, Mail, MessageCircle, ShieldCheck } fr
 function Footer() {
   const currentYear = new Date().getFullYear();
 
-  // ESTA ES LA FUNCIÓN QUE CORRIGE EL ERROR DEL PERFIL
-  const openInstagram = (e) => {
-    e.preventDefault();
-
-    // 1. Intentamos el esquema de la App (Este fuerza a buscar el usuario)
-    const appUrl = "instagram://user?username=bmc_photographycars";
-    // 2. Link de respaldo web limpio
-    const webUrl = "https://www.instagram.com/bmc_photographycars/";
-
-    // Ejecutamos la apertura de la App
-    window.location.href = appUrl;
-
-    // 3. Si en 600ms el usuario sigue en la web (no se abrió la app),
-    // lo mandamos al perfil en el navegador.
-    setTimeout(() => {
-      if (!document.hidden) {
-        window.open(webUrl, "_blank");
-      }
-    }, 600);
-  };
-
   return (
     <footer className="bg-[#050505] border-t border-white/5 relative z-10 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-6">
@@ -59,15 +38,6 @@ function Footer() {
                   {item}
                 </NavLink>
               ))}
-              <Link
-                to="/servicios"
-                className="pt-4 flex items-center gap-2 text-gray-600 hover:text-orange-500 transition-colors"
-              >
-                <ShieldCheck size={12} />
-                <span className="text-[10px] font-black uppercase italic tracking-widest">
-                  Términos y Privacidad
-                </span>
-              </Link>
             </nav>
           </div>
 
@@ -96,31 +66,6 @@ function Footer() {
                   className="text-gray-500 group-hover:text-[#25D366] transition-colors"
                 />
               </a>
-
-              <a
-                href="mailto:bmc.business.info@gmail.com"
-                className="group flex items-center justify-between bg-white/[0.02] border border-white/5 px-4 py-3 rounded-xl hover:border-orange-500/40 transition-all duration-500"
-              >
-                <div className="flex flex-col">
-                  <span className="text-[8px] text-orange-500 font-black uppercase tracking-[0.2em]">
-                    Email
-                  </span>
-                  <span className="text-white font-bold italic uppercase text-xs">
-                    Contacto Directo
-                  </span>
-                </div>
-                <Mail
-                  size={16}
-                  className="text-gray-500 group-hover:text-orange-500 transition-colors"
-                />
-              </a>
-
-              <div className="flex items-start space-x-2 pt-2">
-                <MapPin size={14} className="text-blue-500 mt-1 shrink-0" />
-                <span className="text-gray-500 text-[10px] font-bold uppercase italic leading-tight">
-                  Durango, México
-                </span>
-              </div>
             </div>
           </div>
 
@@ -130,13 +75,15 @@ function Footer() {
               Gear & Connect
             </h3>
             <div className="flex space-x-3">
-              {/* BOTÓN DE INSTAGRAM CON LÓGICA DE CORRECCIÓN */}
-              <button
-                onClick={openInstagram}
-                className="text-white p-3 bg-white/5 rounded-2xl border border-white/5 transition-all hover:scale-110 hover:text-pink-500 cursor-pointer"
+              {/* LINK DE INSTAGRAM CORREGIDO: Usamos el link de 'u' que es el más estable para apps */}
+              <a
+                href="https://www.instagram.com/bmc_photographycars/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white p-3 bg-white/5 rounded-2xl border border-white/5 transition-all hover:scale-110 hover:text-pink-500"
               >
                 <Instagram size={18} />
-              </button>
+              </a>
 
               <a
                 href="https://tiktok.com/@bmc_photographycars"
@@ -163,15 +110,10 @@ function Footer() {
         </div>
 
         {/* BARRA FINAL */}
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-center">
           <p className="text-gray-600 text-[9px] font-black uppercase tracking-[0.4em] italic">
             © {currentYear} BREAK MY COMFORT // ALL RIGHTS RESERVED
           </p>
-          <div className="flex gap-6 opacity-30">
-            <span className="text-white text-[8px] font-black uppercase tracking-widest italic text-center">
-              Designed for High Aesthetics
-            </span>
-          </div>
         </div>
       </div>
     </footer>
